@@ -2,10 +2,10 @@ import React from "react";
 
 function article_1() {
 	return {
-		date: "7 May 2023",
-		title: "The Benefits of Cloud Computing",
+		date: "Febrero 2024",
+		title: "WishList",
 		description:
-			"Cloud computing offers a range of benefits, including cost savings and increased flexibility. Find out why more businesses are turning to the cloud.",
+			"Desarrollo de una app movil en flutter que permite a los usuarios guardar artículos favoritos y compartir su lista de deseos con otros, para que puedan encontrar ideas de regalos.",
 		keywords: [
 			"The Benefits of Cloud Computing",
 			"Tharindu",
@@ -41,10 +41,10 @@ function article_1() {
 
 function article_2() {
 	return {
-		date: "7 May 2023",
-		title: "Artificial Intelligence in Healthcare",
+		date: "Junio 2024",
+		title: "CG SUITE",
 		description:
-			"AI is transforming the healthcare industry, from improving patient outcomes to streamlining operations. Discover the latest applications of this game-changing technology.",
+			"CG SUITE es una app web en la que se gestiona correspondencia y agenda de la empresa Rombotech.",
 		style: ``,
 		keywords: [
 			"Artificial Intelligence in Healthcare",

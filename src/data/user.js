@@ -29,9 +29,9 @@ const INFO = {
 	},
 
 	articles: {
-		title: "I'm passionate about pushing the boundaries of what's possible and inspiring the next generation of innovators.",
+		title: "Experiencia que he tenido como desarrollador web y movil.",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
+			"Cronologia de proyectos que he tenido.",
 	},
 
 	projects: [

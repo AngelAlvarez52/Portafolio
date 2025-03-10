@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -10,6 +11,23 @@ import INFO from "../data/user";
 import SEO from "../data/seo";
 
 import "./styles/contact.css";
+
+// Componente Breadcrumbs
+const Breadcrumbs = () => {
+    return (
+        <nav className="breadcrumbs-container">
+            <ul className="flex space-x-2 text-gray-600">
+                <li>
+                    <Link to="/" className="text-blue-500">Inicio</Link>
+                </li>
+                <li>/</li>
+                <li>
+                    <Link to="/about" className="text-blue-500">Contacto</Link>
+                </li>
+            </ul>
+        </nav>
+    );
+};
 
 const Contact = () => {
 	useEffect(() => {
@@ -39,37 +57,18 @@ const Contact = () => {
 					</div>
 
 					<div className="contact-container">
+						                                {/* Breadcrumbs ahora está justo encima del texto */}
+														<Breadcrumbs />
 						<div className="title contact-title">
-							Let's Get in Touch: Ways to Connect with Me
+						Contáctame
 						</div>
 
 						<div className="subtitle contact-subtitle">
-							Thank you for your interest in getting in touch with
-							me. I welcome your feedback, questions, and
-							suggestions. If you have a specific question or
-							comment, please feel free to email me directly at
+						Gracias por tu interés en ponerte en contacto conmigo. Estoy siempre disponible para discutir posibles proyectos, responder a tus preguntas o escuchar tus sugerencias. Ya sea que estés buscando desarrollar una página web personalizada o una aplicación móvil, me comprometo a ofrecer soluciones de alta calidad, adaptadas a tus necesidades.Para consultas directas, no dudes en enviarme un correo electrónico a
 							&nbsp;{" "}
 							<a href={`mailto:${INFO.main.email}`}>
 								{INFO.main.email}
 							</a>
-							. I make an effort to respond to all messages within
-							24 hours, although it may take me longer during busy
-							periods. Alternatively, you can use the contact form
-							on my website to get in touch. Simply fill out the
-							required fields and I'll get back to you as soon as
-							possible. Finally, if you prefer to connect on
-							social media, you can find me on{" "}
-							<a
-								href={INFO.socials.instagram}
-								target="_blank"
-								rel="noreferrer"
-							>
-								{INFO.socials.instagram}
-							</a>
-							. I post regular updates and engage with my
-							followers there, so don't hesitate to reach out.
-							Thanks again for your interest, and I look forward
-							to hearing from you!
 						</div>
 					</div>
 

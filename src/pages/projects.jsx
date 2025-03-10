@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -10,6 +11,24 @@ import INFO from "../data/user";
 import SEO from "../data/seo";
 
 import "./styles/projects.css";
+
+// Componente Breadcrumbs
+const Breadcrumbs = () => {
+    return (
+        <nav className="breadcrumbs-container">
+            <ul className="flex space-x-2 text-gray-600">
+                <li>
+                    <Link to="/" className="text-blue-500">Inicio</Link>
+                </li>
+                <li>/</li>
+                <li>
+                    <Link to="/about" className="text-blue-500">Proyectos</Link>
+                </li>
+            </ul>
+        </nav>
+    );
+};
+
 
 const Projects = () => {
 	useEffect(() => {
@@ -28,7 +47,7 @@ const Projects = () => {
 					content={currentSEO.keywords.join(", ")}
 				/>
 			</Helmet>
-
+			
 			<div className="page-content">
 				<NavBar active="projects" />
 				<div className="content-wrapper">
@@ -38,6 +57,8 @@ const Projects = () => {
 						</div>
 					</div>
 					<div className="projects-container">
+						{/* Breadcrumbs ahora está justo encima del texto */}
+						<Breadcrumbs />
 						<div className="title projects-title">
 						Proyectos que he creado con el objetivo de hacer una diferencia.
 						</div>

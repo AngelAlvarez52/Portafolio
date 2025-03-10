@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -11,6 +12,23 @@ import SEO from "../data/seo";
 import myArticles from "../data/articles";
 
 import "./styles/articles.css";
+
+// Componente Breadcrumbs
+const Breadcrumbs = () => {
+    return (
+        <nav className="breadcrumbs-container">
+            <ul className="flex space-x-2 text-gray-600">
+                <li>
+                    <Link to="/" className="text-blue-500">Inicio</Link>
+                </li>
+                <li>/</li>
+                <li>
+                    <Link to="/about" className="text-blue-500">Experiencia</Link>
+                </li>
+            </ul>
+        </nav>
+    );
+};
 
 const Articles = () => {
 	useEffect(() => {
@@ -31,6 +49,7 @@ const Articles = () => {
 			</Helmet>
 
 			<div className="page-content">
+				
 				<NavBar active="articles" />
 				<div className="content-wrapper">
 					<div className="articles-logo-container">
@@ -40,6 +59,8 @@ const Articles = () => {
 					</div>
 
 					<div className="articles-main-container">
+						                                {/* Breadcrumbs ahora está justo encima del texto */}
+														<Breadcrumbs />
 						<div className="title articles-title">
 							{INFO.articles.title}
 						</div>
