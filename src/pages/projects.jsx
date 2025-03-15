@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+// components/pages/projects.jsx
+
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import AllProjects from "../components/projects/allProjects";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
-import AllProjects from "../components/projects/allProjects";
-
-import INFO from "../data/user";
-import SEO from "../data/seo";
 
 import "./styles/projects.css";
 
@@ -29,55 +28,52 @@ const Breadcrumbs = () => {
     );
 };
 
-
 const Projects = () => {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+    const [projects, setProjects] = useState([]);
 
-	const currentSEO = SEO.find((item) => item.page === "projects");
+    useEffect(() => {
+        // Obtener los proyectos desde el backend
+        axios
+            .get("http://localhost:3002/projects") // Asegúrate de que esta URL sea la correcta
+            .then((response) => {
+                setProjects(response.data); // Establece los proyectos obtenidos
+            })
+            .catch((error) => {
+                console.error("Error al cargar los proyectos:", error);
+            });
+    }, []);
 
-	return (
-		<React.Fragment>
-			<Helmet>
-				<title>{`Projects | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
-			
-			<div className="page-content">
-				<NavBar active="projects" />
-				<div className="content-wrapper">
-					<div className="projects-logo-container">
-						<div className="projects-logo">
-							<Logo width={46} />
-						</div>
-					</div>
-					<div className="projects-container">
-						{/* Breadcrumbs ahora está justo encima del texto */}
-						<Breadcrumbs />
-						<div className="title projects-title">
-						Proyectos que he creado con el objetivo de hacer una diferencia.
-						</div>
+    return (
+        <React.Fragment>
+            <div className="page-content">
+                <NavBar active="projects" />
+                <div className="content-wrapper">
+                    <div className="projects-logo-container">
+                        <div className="projects-logo">
+                            <Logo width={46} />
+                        </div>
+                    </div>
+                    <div className="projects-container">
+                        <Breadcrumbs />
+                        <div className="title projects-title">
+                            Proyectos que he creado con el objetivo de hacer una diferencia.
+                        </div>
 
-						<div className="subtitle projects-subtitle">
-						A lo largo de mi carrera como desarrollador Full-Stack, he trabajado en diversos proyectos que van desde aplicaciones web hasta soluciones móviles. Mi enfoque ha sido crear productos eficientes, escalables y con un diseño intuitivo. Siempre estoy buscando nuevos desafíos y maneras de mejorar mis habilidades, aplicando las mejores prácticas y herramientas disponibles para ofrecer soluciones de calidad.
-						</div>
+                        <div className="subtitle projects-subtitle">
+                            A lo largo de mi carrera como desarrollador Full-Stack, he trabajado en diversos proyectos que van desde aplicaciones web hasta soluciones móviles. Mi enfoque ha sido crear productos eficientes, escalables y con un diseño intuitivo.
+                        </div>
 
-						<div className="projects-list">
-							<AllProjects />
-						</div>
-					</div>
-					<div className="page-footer">
-						<Footer />
-					</div>
-				</div>
-			</div>
-		</React.Fragment>
-	);
+                        <div className="projects-list">
+                            <AllProjects projects={projects} /> {/* Pasa los proyectos a AllProjects */}
+                        </div>
+                    </div>
+                    <div className="page-footer">
+                        <Footer />
+                    </div>
+                </div>
+            </div>
+        </React.Fragment>
+    );
 };
 
 export default Projects;

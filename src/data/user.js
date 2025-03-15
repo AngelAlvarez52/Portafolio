@@ -54,7 +54,7 @@ const INFO = {
 		},
 
 		{
-			title: "Project 3",
+			title: "Portafolio personal",
 			description:
 				".",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
